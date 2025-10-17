@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sys
 from collections import defaultdict
 
@@ -6,7 +8,10 @@ anagrams = defaultdict(list)
 # Read key-value pairs from mapper
 for line in sys.stdin:
     key, word = line.strip().split('\t', 1)
-    anagrams[key].append(word)
+    try:
+        anagrams[key].append(word)
+    except:
+        continue
 
 # Output groups that have at least 2 words (actual anagrams)
 for key, words in anagrams.items():

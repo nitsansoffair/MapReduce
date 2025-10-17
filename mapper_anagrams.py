@@ -1,10 +1,14 @@
+#!/usr/bin/python3
+
 import sys
 
-# Each line is a word
+# Input comes from STDIN (standard input)
 for line in sys.stdin:
-    word = line.strip()
-    if word:
-        # Sort letters alphabetically; e.g., "listen" -> "eilnst"
+    # Remove leading and trailing whitespace
+    line = line.strip()
+    # Split the line into words
+    words = line.split()
+    # Output the word with a count of 1
+    for word in words:
         key = ''.join(sorted(word))
-        # Output: key \t word
         print(f"{key}\t{word}")
