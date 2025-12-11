@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 import sys
 
-# Reducer: Sum total_points and total_inside across all mappers
-# Pi ≈ 4 * (total_inside / total_points)
+# Reducer: Aggregate total points and inside points across mappers
 total_points = 0
 total_inside = 0
 
@@ -18,7 +17,5 @@ for line in sys.stdin:
 
 if total_points > 0:
     pi_estimate = 4.0 * total_inside / total_points
-    print(f"Estimated Pi: {pi_estimate:.6f}")
-    print(f"Using {total_points:,} total points (ratio inside: {total_inside/total_points:.4f})")
-else:
-    print("No valid points processed")
+    print(f"Estimated Pi: {pi_estimate}")
+    print(f"Using {total_points} total points")
