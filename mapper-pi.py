@@ -2,21 +2,19 @@
 import sys
 import random
 
-# Mapper: Generate random points in unit square [0,1]x[0,1] and emit 1 if inside unit circle
-# Input: single integer N per mapper (number of Monte Carlo samples to generate)
-# Small N: faster but less accurate; large N: slower but more accurate pi estimate
+# Mapper: Generate random points in unit square and emit 1 if inside unit circle
 for line in sys.stdin:
     line = line.strip()
     if not line:
         continue
 
-    # Read number of Monte Carlo samples per mapper
+    # Read number of points per mapper (e.g., from first line or fixed)
     try:
         num_points = int(line)
     except ValueError:
-        raise ValueError(f"Invalid input line '{line}': expected single integer N (number of Monte Carlo samples)")
+        num_points = 1000000  # Default if input invalid
 
-    inside_count = 0  # Count of points inside unit circle (x^2 + y^2 <= 1)
+    inside_count = 0
     for _ in range(num_points):
         x = random.random()
         y = random.random()
